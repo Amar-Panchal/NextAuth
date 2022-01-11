@@ -1,0 +1,123 @@
+.SignIn-Form{
+    margin-top: 7rem;
+    width: max-content;
+}
+.singIn-Img{
+    width: 24rem;
+    height: fit-content;
+}
+.page-link{
+    color: #FFFFFf !important;
+    background-color: #263238 !important;
+    
+}
+.page-item.active .page-link{
+    border-color: #e53935 !important;
+}
+Input{
+    display: block;
+    width: 20rem;
+    padding: 8px 10px 8px;
+    margin-bottom: 15px !important;
+    border: 1px solid #263238;
+    background-color: #b0bec5;
+    color: #263238;
+    border-radius: 3px;
+
+}
+.SignIn-Btn{
+    display: block;
+    width: 100%;
+    padding: 8px 10px 8px;
+    border: 1px solid #0575f5;
+    background-color: #0575f5;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-radius: 3px;
+
+}
+.Google-Btn{
+    width: 100%;
+    padding: 8px 10px 8px;
+    border: 1px solid #e53935;
+    background-color: #e53935;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 3px;
+}
+.loading{
+    font-size: 2rem;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 4rem;
+    color: #e53935;
+}
+.table{
+    margin-top: 1.5rem;
+    background-color:#ffffff;
+}
+.image{
+    width: 50px;
+    height: 50px;
+}
+.title-table{
+    text-align: left;
+    padding-left: 40px !important;
+}
+.table th,.table td{
+    font-size: 1rem ;
+    
+}
+.remove-btn{
+    border: 2px solid #ffffff;
+    background-color: red;
+    color: #ffffff;
+    padding: 3px 12px 5px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.remove-btn:hover{
+    border: 2px solid red;
+    background-color: #ffffff;
+    color: red;
+}
+.Profile{
+    margin-top: 3rem;
+    text-align: center;
+}
+.Profile h4{
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+
+}
+.Profile .SignOut-Btn{
+    padding: 4px 16px 4px;
+    border: 1px solid #e53935;
+    background-color: #e53935;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 3px;
+}
+.navbar{
+    background-color: #0575f5;
+}
+.navbar a{
+    color: #FFFFFf ;
+    font-weight: bolder;
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+.navbar a:focus,.navbar a:after{
+    color: #FFFFFF;
+    text-decoration: 2px #e53935 underline;
+    text-underline-position: under;
+}
+.navbar a:hover{
+    text-decoration: 2px #e53935 underline;
+    text-underline-position: under;
+    color: #ffffff;
+}
