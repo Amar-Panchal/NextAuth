@@ -9,39 +9,59 @@ import { OverlayTrigger,Tooltip } from 'react-bootstrap';
 function UserApi() {
   const [items, setItems] = useState([]);
   const [pageCount, setpageCount] = useState(0);
-
+  const [Name , setName] =useState('');
+  const [rerender, setRerender] = useState(false);
+  const [email, setEmail] = useState('');
   let limit = 5;
 
   useEffect(() => {
     const getComments = async () => {
       const res = await fetch(
-         `https://jsonplaceholder.typicode.com/photos?_page=1&_limit=${limit}`
+         `http://localhost:3000/posts?_page=1&_limit=${limit}`
       );
       const data = await res.json();
       const total = res.headers.get("x-total-count");
       setpageCount(Math.ceil(total / limit));
-       console.log(Math.ceil(total/12));
+    //   console.log(Math.ceil(total/12));
       setItems(data);
+      console.log(data)
     };
     getComments();
-  }, [limit]);
+    
+  }, []);
 
   const fetchComments = async (currentPage) => {
     const res = await fetch(
-     `https://jsonplaceholder.typicode.com/photos?_page=${currentPage}&_limit=${limit}`
+     `http://localhost:3000/posts?_page=${currentPage}&_limit=${limit}`
     );
     const data = await res.json();
+    console.log(data)
     return data;
   };
   const handleDelete = async id => {
-    await axios.delete(`https://jsonplaceholder.typicode.com/photos/${id}`);
+    await axios.delete(`http://localhost:3000/posts/${id}`);
     var newstudent = items.filter((item) => {
-     // console.log(item);
      return item.id !== id;
     })
     setItems(newstudent);
    }
   
+
+   const postData=async(e)=>{
+    let data = {Name,email}
+    let result = await fetch(`http://localhost:3000/posts`,{
+        method:'POST',
+        headers:{
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+        },  
+        body:JSON.stringify(data)
+    });
+    result=await result.json();
+    console.log("postdata",result)
+    setItems(result)
+}
+
 
   const handlePageClick = async (data) => {
     console.log(data.selected);
@@ -82,12 +102,17 @@ function UserApi() {
   <div>
     <Navbar/>
     <div className="container">
+      <div className="post-form">
+        <input type="text" placeholder="Name" value={Name} onChange={(e) =>setName(e.target.value)}/>
+        <input type="email" placeholder="Email" value={email} onChange={(e) =>setEmail(e.target.value)}/>
+        <button type="submit" className="post-btn" onClick={postData}>POST</button>
+      </div>
         <table className="table  table-hover text-center table-bordered">
           <thead>
             <tr>
               <th scope="col">Id</th>
-              <th scope="col">Image</th>
-              <th scope="col">Title</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -97,8 +122,8 @@ function UserApi() {
             return (
                 <tr key={item.id}>
                   <th scope="row">{item.id}</th>
-                  <td><img className="image" src={item.thumbnailUrl} alt=""/></td>
-                  <td className="title-table">{item.title}</td>
+                  <td className="title-table">{item.Name}</td>
+                  <td className="title-table">{item.email}</td>
                   <td><button className="remove-btn" onClick={() => handleDelete(item.id)}>remove</button></td>
                 </tr>
             );
