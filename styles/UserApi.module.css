@@ -1,29 +1,36 @@
-.SignIn-Form{
-    margin-top: 7rem;
-    width: max-content;
-}
-.singIn-Img{
-    width: 18rem;
-    height: fit-content;
-}
-@media(max-width:653px){
-    .singIn-Img{
-        display: none;
-    }
-}
-.page-link{
+.navbar{
+    background-color: #0575f5;
+  }
+  .navbar a{
+    color: #FFFFFf ;
+    font-weight: bolder;
+    text-decoration: none;
+    font-size: 1.3rem;
+  }
+  .navbar a:focus,.navbar a:after{
+    color: #FFFFFF;
+    text-decoration: 2px #e53935 underline;
+    text-underline-position: under;
+  }
+  .navbar a:hover{
+    text-decoration: 2px #e53935 underline;
+    text-underline-position: under;
+    color: #ffffff;
+  }
+  
+  .page-link{
     color: #FFFFFf  !important;
     background-color: #263238 !important;
-}
-.page-item.active .page-link{
+  }
+  .page-item.active .page-link{
     border-color: #e53935 !important;
-}
-.post-form{
+  }
+  .post-form{
     margin-top: 1rem;
     display: flex;
     justify-content: center;
-}
-.post-form .post-btn{
+  }
+  .post-form .post-btn{
     padding: 1px 20px 0px;
     font-size: 0.7rem;
     font-weight: 700;
@@ -31,12 +38,12 @@
     background-color: #ffffff;
     border: 2px solid #263238;
     border-radius: 3px;
-
-}
-.post-form .post-btn:hover{
+  
+  }
+  .post-form .post-btn:hover{
     background-color: #28a745;
-}
-.post-form input{
+  }
+  .post-form input{
     min-width: 17rem;
     margin-right: 20px !important;
     padding: 8px 10px 8px;
@@ -44,20 +51,19 @@
     background-color: #b0bec5;
     color: #263238;
     border-radius: 3px;
-}
-Input{
+  }
+  .sign-input{
     display: block;
-    min-width: 20rem;
-    margin-right: 20px !important;
+    width: 20rem;
     padding: 8px 10px 8px;
-    margin-bottom: 15px ;
+    margin-bottom: 10px ;
     border: 1px solid #263238;
     background-color: #b0bec5;
     color: #263238;
     border-radius: 3px;
-
-}
-.SignIn-Btn{
+  
+  }
+  .SignIn-Btn{
     display: block;
     width: 100%;
     padding: 8px 10px 8px;
@@ -66,11 +72,11 @@ Input{
     color: #ffffff;
     font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     border-radius: 3px;
-
-}
-.Google-Btn{
+    margin-top: 20px;
+  }
+  .Google-Btn{
     width: 100%;
     padding: 8px 10px 8px;
     border: 1px solid #e53935;
@@ -79,77 +85,40 @@ Input{
     font-size: 1rem;
     font-weight: bold;
     border-radius: 3px;
-}
-.loading{
+  }
+  .loading{
     font-size: 2rem;
     font-weight: bolder;
     text-align: center;
     margin-top: 4rem;
     color: #e53935;
-}
-.table{
+  }
+  .table{
     margin-top: 1.5rem;
     background-color:#ffffff;
-}
-.image{
+  }
+  .image{
     width: 50px;
     height: 50px;
-}
-.title-table{
+  }
+  .title-table{
     text-align: left;
     padding-left: 40px !important;
-}
-.table th,.table td{
+  }
+  .table th,.table td{
     font-size: 1rem ;
     
-}
-.remove-btn{
+  }
+  .remove-btn{
     border: 2px solid #ffffff;
     background-color: red;
     color: #ffffff;
     padding: 3px 12px 5px;
     border-radius: 10px;
     font-weight: bold;
-}
-.remove-btn:hover{
+  }
+  .remove-btn:hover{
     border: 2px solid red;
     background-color: #ffffff;
     color: red;
-}
-.Profile{
-    margin-top: 3rem;
-    text-align: center;
-}
-.Profile h4{
-    font-size: 1.5rem !important;
-    font-weight: bold !important;
-
-}
-.Profile .SignOut-Btn{
-    padding: 4px 16px 4px;
-    border: 1px solid #e53935;
-    background-color: #e53935;
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 3px;
-}
-.navbar{
-    background-color: #0575f5;
-}
-.navbar a{
-    color: #FFFFFf ;
-    font-weight: bolder;
-    text-decoration: none;
-    font-size: 1.3rem;
-}
-.navbar a:focus,.navbar a:after{
-    color: #FFFFFF;
-    text-decoration: 2px #e53935 underline;
-    text-underline-position: under;
-}
-.navbar a:hover{
-    text-decoration: 2px #e53935 underline;
-    text-underline-position: under;
-    color: #ffffff;
-}
+  }

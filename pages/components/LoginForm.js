@@ -1,8 +1,8 @@
-import React from 'react'
 import { OverlayTrigger,Tooltip } from 'react-bootstrap';
 import { signIn, signOut, useSession } from 'next-auth/client';
-import styles from '../styles/Home.module.css';
-import Navbar from './Navbar';
+import Image from 'next/image';
+
+
 
 function LoginForm() {
     const [session, loadingSession] = useSession();
@@ -16,8 +16,8 @@ function LoginForm() {
             <>
           <div className="SignIn-Form d-flex justify-content-center mx-auto">
             <div>
-                <input type="text" placeholder="email" disabled />
-                <input type="text" placeholder="password" disabled />
+                <input className="sign-input" type="text" placeholder="email" disabled />
+                <input type="text" className="sign-input" placeholder="password" disabled />
                 <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Please Login with Google</Tooltip>}>
                 <button className="SignIn-Btn" disabled>Sign In</button>
                 </OverlayTrigger>
@@ -26,7 +26,7 @@ function LoginForm() {
                 </button>
             </div>
             <div>
-              <img className="singIn-Img" src="/signup.jpg" alt="" />
+              <Image className="singIn-Img" src="/signup.jpg" alt="" height={244} width={288} />
             </div>
           </div>
         </>
@@ -34,10 +34,10 @@ function LoginForm() {
 
       {session && (
         <>
-        <Navbar />
+        
         <div className="Profile">
           <h4>Hello, {session.user.name}</h4>
-          <div className={styles.boxCenter}>
+          <div className="google-profile-img">
             <h4>Email: {session.user.email}</h4>
             <br />
             {session.user.image && (

@@ -1,28 +1,28 @@
 import ReactPaginate from "react-paginate";
 import { useEffect, useState } from "react";
-import 'bootstrap/dist/css/bootstrap.css'
-import axios from "axios";
-import Navbar  from "./Navbar";
 import { signIn, signOut, useSession } from 'next-auth/client';
 import { OverlayTrigger,Tooltip } from 'react-bootstrap';
+import Image from "next/image";
+import Navbar  from "./components/Navbar";
+import { useRouter } from "next/router";
+
 
 function UserApi() {
   const [items, setItems] = useState([]);
   const [pageCount, setpageCount] = useState(0);
   const [Name , setName] =useState('');
-  const [rerender, setRerender] = useState(false);
   const [email, setEmail] = useState('');
+  const Router = useRouter()
   let limit = 5;
-
+  
   useEffect(() => {
     const getComments = async () => {
       const res = await fetch(
-         `http://localhost:3000/posts?_page=1&_limit=${limit}`
+         `http://localhost:8000/posts?_page=1&_limit=${limit}`
       );
       const data = await res.json();
       const total = res.headers.get("x-total-count");
       setpageCount(Math.ceil(total / limit));
-    //   console.log(Math.ceil(total/12));
       setItems(data);
       console.log(data)
     };
@@ -30,26 +30,34 @@ function UserApi() {
     
   }, []);
 
+
   const fetchComments = async (currentPage) => {
     const res = await fetch(
-     `http://localhost:3000/posts?_page=${currentPage}&_limit=${limit}`
+     `http://localhost:8000/posts?_page=${currentPage}&_limit=${limit}`
     );
     const data = await res.json();
     console.log(data)
     return data;
   };
   const handleDelete = async id => {
-    await axios.delete(`http://localhost:3000/posts/${id}`);
-    var newstudent = items.filter((item) => {
+    await fetch(`http://localhost:8000/posts/${id}`,{
+    method:"DELETE",
+    headers: {
+      'Accept' : 'application/json',
+      'Content-Type' : 'application/json'
+   }
+    });
+    let newstudent = items.filter((item) => {
      return item.id !== id;
     })
     setItems(newstudent);
+  
    }
   
 
-   const postData=async(e)=>{
+   const postData=async  e=>{
     let data = {Name,email}
-    let result = await fetch(`http://localhost:3000/posts`,{
+    let result = await fetch(`http://localhost:8000/posts`,{
         method:'POST',
         headers:{
             "Content-Type":"application/json",
@@ -57,12 +65,13 @@ function UserApi() {
         },  
         body:JSON.stringify(data)
     });
-    result=await result.json();
-    console.log("postdata",result)
-    setItems(result)
+    data=await result.json();
+    console.log("postdata",data)
+    Router.push("/")
+    setItems(data)
+    refreshPage();
+
 }
-
-
   const handlePageClick = async (data) => {
     console.log(data.selected);
     let currentPage = data.selected + 1;
@@ -92,7 +101,7 @@ function UserApi() {
                 </button>
             </div>
             <div>
-              <img className="singIn-Img" src="/signup.jpg" alt="" />
+            <Image className="singIn-Img" src="/signup.jpg" alt="" height={244} width={288} />
             </div>
           </div>
         </>
@@ -107,7 +116,7 @@ function UserApi() {
         <input type="email" placeholder="Email" value={email} onChange={(e) =>setEmail(e.target.value)}/>
         <button type="submit" className="post-btn" onClick={postData}>POST</button>
       </div>
-        <table className="table  table-hover text-center table-bordered">
+        <table className="table table-hover text-center table-bordered">
           <thead>
             <tr>
               <th scope="col">Id</th>
